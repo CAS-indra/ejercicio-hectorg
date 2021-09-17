@@ -3,6 +3,10 @@
 
 <app-titulo></app-titulo>
 
+<h2 [style.color]="color">Número de transacciones: {{ transacciones.length | number:'1.1' }} </h2>
+
+<h3>Transacciones</h3>
+
 <router-outlet></router-outlet>
 
 <app-pie class="mt-auto"></app-pie>
