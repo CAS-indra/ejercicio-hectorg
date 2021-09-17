@@ -23,7 +23,7 @@
 
 </div>
 
-<p>Balance Total: </p>
+<p>Balance Total: <span [ngClass]="{ gasto: balance < 0, ingreso: balance >= 0}">{{ balance }}</span></p>
 
 <router-outlet></router-outlet>
 

@@ -8,6 +8,7 @@ import { Component, Inject, Injectable } from '@angular/core';
 @Injectable()
 export class AppComponent {
   public color = 'grey';
+
   public transacciones =  [
     {
       id: 'design_a_virus',
@@ -50,5 +51,19 @@ export class AppComponent {
       ownerId: 'world_admin',
     },
   ];
+  public balance = this.calcularBalance();
+
+  public calcularBalance(): number{
+    let total = 0
+    this.transacciones.forEach(element => {
+      if(element.kind == 'spent') {
+        total -= element.amount;
+      } else {
+        total += element.amount;
+      }
+      console.log("balance= ", total);
+    });
+    return total;
+  }
 
 }
