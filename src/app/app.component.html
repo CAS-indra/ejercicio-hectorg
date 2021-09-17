@@ -7,6 +7,24 @@
 
 <h3>Transacciones</h3>
 
+<div class="transacciones" *ngFor="let transaccion of transacciones">
+  <div [ngClass]="{ gasto: transaccion.kind=='spent', ingreso: transaccion.kind=='income'}">
+    <ul>
+      <li>ID: {{transaccion.id}}</li>
+      <li>Nombre: {{transaccion.name}}</li>
+      <li>Descripción: {{transaccion.description}}</li>
+      <li>Tipo: {{transaccion.kind}}</li>
+      <li>Importe: {{transaccion.amount}}</li>
+      <li>Fecha: {{transaccion.date | date: 'YYYY-m-d'}}</li>
+      <li>ID Proyecto: {{transaccion.projectId}}</li>
+      <li>ID Propietario: {{transaccion.ownerId}}</li>
+    </ul>
+  </div>
+
+</div>
+
+<p>Balance Total: </p>
+
 <router-outlet></router-outlet>
 
 <app-pie class="mt-auto"></app-pie>
