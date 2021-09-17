@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from 'src/app/app.component';
+
 
 @Component({
   selector: 'app-cabecera',
@@ -8,7 +8,7 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class CabeceraComponent implements OnInit {
   public empresa = 'INDRA';
-  constructor(public appComp: AppComponent) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

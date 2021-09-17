@@ -1,0 +1,23 @@
+<app-titulo></app-titulo>
+
+<h2 [style.color]="color">Número de transacciones: {{ transacciones.length | number:'1.0' }} </h2>
+
+<h3>Transacciones</h3>
+
+<div class="transacciones" *ngFor="let transaccion of transacciones">
+  <div [ngClass]="{ gasto: transaccion.kind=='spent', ingreso: transaccion.kind=='income'}">
+    <ul>
+      <li>ID: {{transaccion.id}}</li>
+      <li>Nombre: {{transaccion.name}}</li>
+      <li>Descripción: {{transaccion.description}}</li>
+      <li>Tipo: {{transaccion.kind}}</li>
+      <li>Importe: {{transaccion.amount}}</li>
+      <li>Fecha: {{transaccion.date | date: 'YYYY-M-d'}}</li>
+      <li>ID Proyecto: {{transaccion.projectId}}</li>
+      <li>ID Propietario: {{transaccion.ownerId}}</li>
+    </ul>
+  </div>
+
+</div>
+
+<p>Balance Total: <span [ngClass]="{ gasto: balance < 0, ingreso: balance >= 0}">{{ balance }}</span></p>
