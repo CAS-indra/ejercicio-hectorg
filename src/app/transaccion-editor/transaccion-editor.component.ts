@@ -9,7 +9,7 @@ import { TransaccionesService } from '../data/transacciones.service';
 })
 export class TransaccionEditorComponent implements OnInit {
   public transaccionId = '';
-  public transaccion = { id: '', name: '', description: '', kind: '', amount: 0, date: new Date, projectId: '', ownerId: ''};
+  public transaccion = { id: '', name: '', description: '', kind: '', amount: 0, date: '', projectId: '', ownerId: ''};
 
   constructor(private route: ActivatedRoute, private transaccionesService: TransaccionesService) { }
 
