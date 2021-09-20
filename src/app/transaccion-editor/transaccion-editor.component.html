@@ -1,14 +1,15 @@
 
-
-<div [ngClass]="{ gasto: transaccion.kind=='spent', ingreso: transaccion.kind=='income'}">
-  <h3>Transaccion ID: {{transaccion.id}}</h3>
-  <ul>
-    <li>Nombre: {{transaccion.name}}</li>
-    <li>Descripción: {{transaccion.description}}</li>
-    <li>Tipo: {{transaccion.kind}}</li>
-    <li>Importe: {{transaccion.amount}}</li>
-    <li>Fecha: {{transaccion.date | date: 'YYYY-MM-dd'}}</li>
-    <li>ID Proyecto: {{transaccion.projectId}}</li>
-    <li>ID Propietario: {{transaccion.ownerId}}</li>
-  </ul>
+<div *ngIf="transaccion">
+  <div [ngClass]="{ gasto: transaccion.kind =='spent', ingreso: transaccion.kind=='income'}">
+    <h3>Transaccion ID: {{transaccion.id}}</h3>
+    <ul>
+      <li>Nombre: {{transaccion.name}}</li>
+      <li>Descripción: {{transaccion.description}}</li>
+      <li>Tipo: {{transaccion.kind}}</li>
+      <li>Importe: {{transaccion.amount}}</li>
+      <li>Fecha: {{transaccion.date | date: 'YYYY-MM-dd'}}</li>
+      <li>ID Proyecto: {{transaccion.projectId}}</li>
+      <li>ID Propietario: {{transaccion.ownerId}}</li>
+    </ul>
+  </div>
 </div>

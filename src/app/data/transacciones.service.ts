@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
 
+
+
+export type Transaccion = {
+  id: string;
+  name: string;
+  description: string;
+  kind: string;
+  amount: number;
+  date: Date;
+  projectId: string;
+  ownerId: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TransaccionesService {
 
-  private transacciones =  [
+  private transacciones: Transaccion[] =  [
     {
       id: 'design_a_virus',
       name: 'Design a virus',
@@ -48,9 +61,10 @@ export class TransaccionesService {
     },
   ];
 
+
   constructor() {}
 
-  public getTransacciones(): any[] {
+  public getTransacciones(): Transaccion[] {
     return this.transacciones;
   }
 }
