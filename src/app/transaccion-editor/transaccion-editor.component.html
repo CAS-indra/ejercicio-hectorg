@@ -1,0 +1,12 @@
+
+
+<div [ngClass]="{ gasto: transaccion.kind=='spent', ingreso: transaccion.kind=='income'}">
+  <h3>Transaccion ID: {{transaccion.id}}</h3>
+  <p>Nombre: {{transaccion.name}}</p>
+  <p>Descripción: {{transaccion.description}}</p>
+  <p>Tipo: {{transaccion.kind}}</p>
+  <p>Importe: {{transaccion.amount}}</p>
+  <p>Fecha: {{transaccion.date}}</p>
+  <p>ID Proyecto: {{transaccion.projectId}}</p>
+  <p>ID Propietario: {{transaccion.ownerId}}</p>
+</div>

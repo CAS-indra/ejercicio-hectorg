@@ -22,7 +22,9 @@ const routes: Routes = [
   {
     path: 'transaction/new',
     loadChildren: () => import('./nueva-transaccion/nueva-transaccion.module').then(m => m.NuevaTransaccionModule)
-  }
+  },
+  { path: 'transaccion-editor',
+    loadChildren: () => import('./transaccion-editor/transaccion-editor.module').then(m => m.TransaccionEditorModule) }
 ];
 
 @NgModule({
