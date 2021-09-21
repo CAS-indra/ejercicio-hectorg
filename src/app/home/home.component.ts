@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { TransaccionesService } from '../data/transacciones.service';
+import { Transaccion, TransaccionesService } from '../data/transacciones.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +8,18 @@ import { TransaccionesService } from '../data/transacciones.service';
 })
 export class HomeComponent {
 
-  constructor(private transaccionesService: TransaccionesService) { }
-  public transacciones = this.transaccionesService.getTransacciones();
-
+  public transacciones: Transaccion[] = [];
   public color = 'grey';
+  public balance = 0;
 
-  public balance = this.calcularBalance();
+  constructor(private transaccionesService: TransaccionesService) {
+    this.transaccionesService.getTransacciones$().subscribe(
+      resp =>{
+        this.transacciones = resp;
+        this.balance = this.calcularBalance();
+      }
+    );
+  }
 
   public calcularBalance(): number{
     let total = 0

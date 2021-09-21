@@ -1,5 +1,5 @@
 
-<div *ngIf="transaccion">
+<div *ngIf="transaccion$ | async as transaccion">
   <div [ngClass]="{ gasto: transaccion.kind =='spent', ingreso: transaccion.kind=='income'}">
     <h3>Transaccion ID: {{transaccion.id}}</h3>
     <ul>
