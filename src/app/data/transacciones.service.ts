@@ -63,6 +63,7 @@ export class TransaccionesService {
   //   },
   // ];
 
+  private readonly urlBase = 'https://proton-angular-builders.herokuapp.com/v1/transactions/';
 
   constructor(private http: HttpClient) {}
 
@@ -72,13 +73,13 @@ export class TransaccionesService {
 
   public getTransacciones$(): Observable<Transaccion[]> {
     return this.http
-               .get<{ data: Transaccion[] }>('https://proton-angular-builders.herokuapp.com/v1/transactions')
+               .get<{ data: Transaccion[] }>(this.urlBase)
                .pipe(map(res => res.data));
   }
 
   public getTransaccionById$( id: string ): Observable<Transaccion> {
     return this.http
-               .get<{ data: Transaccion }>('https://proton-angular-builders.herokuapp.com/v1/transactions/' + id)
+               .get<{ data: Transaccion }>(this.urlBase + id)
                .pipe(map(res => res.data));
   }
 }
