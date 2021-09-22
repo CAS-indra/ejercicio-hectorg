@@ -6,13 +6,15 @@ import { Transaccion, TransaccionesService } from '../data/transacciones.service
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   public transacciones: Transaccion[] = [];
   public color = 'grey';
   public balance = 0;
 
-  constructor(private transaccionesService: TransaccionesService) {
+  constructor(private transaccionesService: TransaccionesService) { }
+
+  ngOnInit(): void {
     this.transaccionesService.getTransacciones$().subscribe(
       resp =>{
         this.transacciones = resp;
