@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 export type Transaccion = {
@@ -63,7 +64,8 @@ export class TransaccionesService {
   //   },
   // ];
 
-  private readonly urlBase = 'https://proton-angular-builders.herokuapp.com/v1/transactions/';
+  // private readonly urlBase = 'https://proton-angular-builders.herokuapp.com/v1/transactions/';
+  private readonly url = environment.apiUrl + 'transactions/';
 
   constructor(private http: HttpClient) {}
 
@@ -73,13 +75,27 @@ export class TransaccionesService {
 
   public getTransacciones$(): Observable<Transaccion[]> {
     return this.http
-               .get<{ data: Transaccion[] }>(this.urlBase)
+               .get<{ data: Transaccion[] }>(this.url)
                .pipe(map(res => res.data));
   }
 
   public getTransaccionById$( id: string ): Observable<Transaccion> {
     return this.http
-               .get<{ data: Transaccion }>(this.urlBase + id)
+               .get<{ data: Transaccion }>(this.url + id)
                .pipe(map(res => res.data));
+  }
+
+  public postTransaccion$(transaccion: Transaccion): Observable<Transaccion> {
+    return this.http.post<{ data: Transaccion }>(this.url, transaccion).pipe(map(res => res.data));
+  }
+
+  public putTransaccion$(transaccion: Transaccion): Observable<Transaccion> {
+    return this.http
+      .put<{ data: Transaccion }>(this.url + transaccion.id, transaccion)
+      .pipe(map(res => res.data));
+  }
+
+  public deleteTransaccionById(id: string): Observable<void> {
+    return this.http.delete<void>(this.url + id);
   }
 }

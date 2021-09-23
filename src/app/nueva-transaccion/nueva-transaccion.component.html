@@ -1,1 +1,47 @@
-<p>nueva-transaccion works!</p>
+<form [formGroup]="formGroup"
+      (ngSubmit)="submitTransaccion()">
+  <fieldset style="margin-left: 25px;">
+    <div>
+      <label for="id">ID: </label>
+      <input type="text" name="id" id="id" formControlName="id">
+      <span *ngIf="formGroup.controls['id'].errors?.required">Campo requerido</span>
+      <span *ngIf="formGroup.controls['id'].errors?.minlength">Min</span>
+      <span *ngIf="formGroup.controls['id'].errors?.maxlength">Max</span>
+      <!-- Aqui puedo ver los errores -->
+      <!-- {{formGroup.controls['name'].errors | json}} -->
+    </div>
+    <div>
+      <label for="name">Nombre: </label>
+      <input type="text" name="name" id="name" formControlName="name">
+      <span *ngIf="formGroup.controls['name'].errors">Campo requerido</span>
+    </div>
+    <div>
+      <label for="description">Descripción: </label>
+      <input type="text" name="description" id="description" formControlName="description">
+    </div>
+    <div>
+      <label for="kind">Tipo: </label>
+      <input type="text" name="kind" id="kind" formControlName="kind">
+      <span *ngIf="formGroup.controls['kind'].errors">Campo requerido</span>
+    </div>
+    <div>
+      <label for="amount">Importe: </label>
+      <input type="number" name="amount" id="amount" formControlName="amount">
+    </div>
+    <div>
+      <label for="date">Fecha: </label>
+      <input type="date" name="date" id="date" formControlName="date">
+    </div>
+    <div>
+      <label for="projectId">ID Proyecto: </label>
+      <input type="text" name="projectId" id="projectId" formControlName="projectId">
+    </div>
+    <div>
+      <label for="ownerId">ID Propietario: </label>
+      <input type="text" name="ownerId" id="ownerId" formControlName="ownerId">
+    </div>
+  </fieldset>
+  <button>Reset</button>
+  <button type="submit" [disabled]="formGroup.invalid">Enviar</button>
+</form>
+<h2>{{message}}</h2>
